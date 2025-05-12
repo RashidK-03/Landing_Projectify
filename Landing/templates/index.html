@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projectify</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white text-gray-900">
+<!-- Улучшенная шапка с переключателем языка -->
+<header class="w-full bg-white shadow-md py-4 px-6 flex justify-between items-center fixed top-0 z-50">
+  <div class="text-xl font-bold text-indigo-700">
+    Projectify
+  </div>
+  <div class="space-x-4">
+    <a href="{{ url_for('landing_ru') }}"
+       class="text-sm font-semibold px-3 py-1 rounded-full transition duration-150
+              {% if lang == 'ru' %}bg-indigo-600 text-white{% else %}text-indigo-700 hover:bg-indigo-100{% endif %}">
+      RU
+    </a>
+    <a href="{{ url_for('landing_en') }}"
+       class="text-sm font-semibold px-3 py-1 rounded-full transition duration-150
+              {% if lang == 'en' %}bg-indigo-600 text-white{% else %}text-indigo-700 hover:bg-indigo-100{% endif %}">
+      EN
+    </a>
+  </div>
+</header>
+
+
+  <!-- Главный блок Hero -->
+
+<section style="background-image: url('/static/landi.jpg'); background-size: cover; background-position: center;"
+         class="min-h-screen flex flex-col justify-center items-center text-center px-4 text-white">
+
+  <div class="bg-white/20 backdrop-blur-md border border-white/40 rounded-2xl p-8 max-w-3xl shadow-lg">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Projectify</h1>
+    <p class="text-lg md:text-xl mb-6">
+      {% if lang == 'ru' %}
+        Платформа для новичков в IT, чтобы получать реальный опыт через работу над проектами.
+      {% else %}
+        A platform for beginners in IT to gain real experience through working on projects.
+      {% endif %}
+    </p>
+    <a href="#start" class="px-6 py-3 bg-indigo-600 text-white rounded-xl text-lg hover:bg-indigo-700 transition transform hover:scale-105">
+      {% if lang == 'ru' %}
+        Начать сейчас
+      {% else %}
+        Start now
+      {% endif %}
+    </a>
+  </div>
+
+</section>
+
+
+<!-- Контакты -->
+<section id="contacts" class="bg-yellow-500 py-16 px-4 text-center text-white">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6">
+      {% if lang == 'ru' %}
+        Контакты
+      {% else %}
+        Contact Us
+      {% endif %}
+    </h2>
+
+    <!-- Блок Email -->
+    <div class="bg-white text-gray-800 p-4 mb-4 rounded-lg shadow-lg">
+      <p class="text-lg mb-4">
+        📧 Email:
+        <a href="mailto:projectify.dev@gmail.com" class="text-indigo-600 hover:underline">
+          projectify.dev@gmail.com
+        </a>
+      </p>
+    </div>
+
+    <!-- Блок Telegram -->
+    <div class="bg-white text-gray-800 p-4 rounded-lg shadow-lg">
+      <p class="text-lg">
+        💬 Telegram CEO:
+        <a href="https://t.me/semakh179" target="_blank" class="text-indigo-600 hover:underline">
+          @ceo_projectify
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Блок: Проблема -->
+<section id="problem" class="bg-gradient-to-r from-blue-500 to-blue-700 py-20 px-4 text-center">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-white">
+      {% if lang == 'ru' %}
+        В чём проблема?
+      {% else %}
+        What's the problem?
+      {% endif %}
+    </h2>
+
+    <ul class="text-lg space-y-6 text-left text-gray-900">
+      <!-- Первый пункт -->
+      <li class="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-md">
+        <span class="text-blue-600 text-2xl">⚠️</span>
+        <span>
+          {% if lang == 'ru' %}Трудно получить реальный опыт до первой работы в IT.{% else %}It's hard to gain real experience before the first IT job.{% endif %}
+        </span>
+      </li>
+
+      <!-- Второй пункт -->
+      <li class="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-md">
+        <span class="text-blue-600 text-2xl">🛠️</span>
+        <span>
+          {% if lang == 'ru' %}Нет чётких задач — сложно придумать полезный pet-проект.{% else %}There are no clear tasks — it's hard to come up with a useful pet project.{% endif %}
+        </span>
+      </li>
+
+      <!-- Третий пункт -->
+      <li class="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-md">
+        <span class="text-blue-600 text-2xl">📚</span>
+        <span>
+          {% if lang == 'ru' %}Отсутствует обратная связь и менторинг на старте пути.{% else %}There is no feedback or mentoring at the beginning of the journey.{% endif %}
+        </span>
+      </li>
+
+      <!-- Четвёртый пункт -->
+      <li class="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-md">
+        <span class="text-blue-600 text-2xl">🤝</span>
+        <span>
+          {% if lang == 'ru' %}Трудно найти единомышленников для реализации идей.{% else %}It's hard to find like-minded people to bring ideas to life.{% endif %}
+        </span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- Блок: Решение -->
+<section id="solution" class="bg-gradient-to-r from-indigo-50 to-purple-100 py-20 px-4 text-center">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-indigo-900">
+      {% if lang == 'ru' %}
+        Наше решение — Projectify
+      {% else %}
+        Our solution — Projectify
+      {% endif %}
+    </h2>
+
+    <p class="text-lg mb-12 text-gray-700">
+      {% if lang == 'ru' %}
+        Projectify помогает начинающим IT-специалистам получить реальный опыт, выполнять структурированные задачи, получать фидбек и находить команду.
+      {% else %}
+        Projectify helps beginner IT specialists gain real experience, perform structured tasks, receive feedback, and find a team.
+      {% endif %}
+    </p>
+
+    <div class="grid gap-6 md:grid-cols-2 text-left">
+      <!-- Карточка 1 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 flex items-start space-x-4">
+        <div class="text-purple-600 text-3xl">📂</div>
+        <div>
+          <p class="font-semibold text-gray-900">
+            {% if lang == 'ru' %}Чёткие проекты, разбитые на задачи с понятными критериями.{% else %}Clear projects broken down into tasks with understandable criteria.{% endif %}
+          </p>
+        </div>
+      </div>
+
+      <!-- Карточка 2 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 flex items-start space-x-4">
+        <div class="text-purple-600 text-3xl">🔁</div>
+        <div>
+          <p class="font-semibold text-gray-900">
+            {% if lang == 'ru' %}Фидбек на git push — вы учитесь, как в реальной работе.{% else %}Feedback on git push — you learn how to work in real-life scenarios.{% endif %}
+          </p>
+        </div>
+      </div>
+
+      <!-- Карточка 3 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 flex items-start space-x-4">
+        <div class="text-purple-600 text-3xl">👥</div>
+        <div>
+          <p class="font-semibold text-gray-900">
+            {% if lang == 'ru' %}Возможность объединяться в команды на 10 уровне.{% else %}The ability to form teams at level 10.{% endif %}
+          </p>
+        </div>
+      </div>
+
+      <!-- Карточка 4 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 flex items-start space-x-4">
+        <div class="text-purple-600 text-3xl">🎮</div>
+        <div>
+          <p class="font-semibold text-gray-900">
+            {% if lang == 'ru' %}Система опыта, достижений и роста как в игре.{% else %}A system of experience, achievements, and growth like in a game.{% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Блок: Клиентские сегменты и ценностные предложения -->
+<section id="segments" class="py-20 px-4 bg-gray-50 text-center">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12">
+      {% if lang == 'ru' %}
+        Для кого Projectify?
+      {% else %}
+        Who is Projectify for?
+      {% endif %}
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Сегмент 1: Новички в IT -->
+      <div class="bg-white p-6 rounded-2xl shadow-md">
+        <h3 class="text-xl font-semibold mb-3">
+          {% if lang == 'ru' %}
+            👩‍💻 Новички в IT
+          {% else %}
+            👩‍💻 Beginners in IT
+          {% endif %}
+        </h3>
+        <p class="text-gray-600">
+          {% if lang == 'ru' %}
+            Первые реальные проекты без страха и хаоса. Выполняй задачи, получай опыт и уверенность.
+          {% else %}
+            Your first real projects without fear and chaos. Complete tasks, gain experience and confidence.
+          {% endif %}
+        </p>
+      </div>
+
+      <!-- Сегмент 2: Опытные джуны -->
+      <div class="bg-white p-6 rounded-2xl shadow-md">
+        <h3 class="text-xl font-semibold mb-3">
+          {% if lang == 'ru' %}
+            🧠 Джуны с опытом
+          {% else %}
+            🧠 Juniors with experience
+          {% endif %}
+        </h3>
+        <p class="text-gray-600">
+          {% if lang == 'ru' %}
+            Прокачай профиль через командную работу и проекты, приближенные к индустрии.
+          {% else %}
+            Level up your profile through team work and projects similar to the industry.
+          {% endif %}
+        </p>
+      </div>
+
+      <!-- Сегмент 3: ИТ-компании и менторы -->
+      <div class="bg-white p-6 rounded-2xl shadow-md">
+        <h3 class="text-xl font-semibold mb-3">
+          {% if lang == 'ru' %}
+            🏢 IT-компании и менторы
+          {% else %}
+            🏢 IT companies and mentors
+          {% endif %}
+        </h3>
+        <p class="text-gray-600">
+          {% if lang == 'ru' %}
+            Находите мотивированных ребят, создавайте open-source задачи и прокачивайте сообщество.
+          {% else %}
+            Find motivated individuals, create open-source tasks, and build up the community.
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Блок: Как это работает -->
+<section id="how-it-works" class="py-20 px-4 bg-white text-center">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12">
+      {% if lang == 'ru' %}
+        Как это работает?
+      {% else %}
+        How it works?
+      {% endif %}
+    </h2>
+
+    <div class="grid md:grid-cols-4 gap-8 text-left">
+      <!-- Шаг 1 -->
+      <div class="p-6 bg-gray-100 rounded-2xl shadow-sm">
+        <h3 class="text-xl font-semibold mb-2">
+          {% if lang == 'ru' %}
+            1. Регистрируйся
+          {% else %}
+            1. Register
+          {% endif %}
+        </h3>
+        <p class="text-gray-600">
+          {% if lang == 'ru' %}
+            Создай профиль, укажи стек и интересы. Добавь свой GitHub.
+          {% else %}
+            Create a profile, specify your stack and interests. Add your GitHub.
+          {% endif %}
+        </p>
+      </div>
+
+      <!-- Шаг 2 -->
+      <div class="p-6 bg-gray-100 rounded-2xl shadow-sm">
+        <h3 class="text-xl font-semibold mb-2">
+          {% if lang == 'ru' %}
+            2. Выбирай проект
+          {% else %}
+            2. Choose a project
+          {% endif %}
+        </h3>
+        <p class="text-gray-600">
+          {% if lang == 'ru' %}
+            Находи реальные задачи по своему уровню. Без лишнего менеджмента.
+          {% else %}
+            Find real tasks suited to your level. No unnecessary management.
+          {% endif %}
+        </p>
+      </div>
+
+      <!-- Шаг 3 -->
+      <div class="p-6 bg-gray-100 rounded-2xl shadow-sm">
+        <h3 class="text-xl font-semibold mb-2">
+          {% if lang == 'ru' %}
+            3. Делаешь → пушишь
+          {% else %}
+            3. Do → Push
+          {% endif %}
+        </h3>
+        <p class="text-gray-600">
+          {% if lang == 'ru' %}
+            Решай задачи, пушь код — и получай мгновенный фидбек и XP.
+          {% else %}
+            Solve tasks, push code — and get instant feedback and XP.
+          {% endif %}
+        </p>
+      </div>
+
+      <!-- Шаг 4 -->
+      <div class="p-6 bg-gray-100 rounded-2xl shadow-sm">
+        <h3 class="text-xl font-semibold mb-2">
+          {% if lang == 'ru' %}
+            4. Прокачивайся
+          {% else %}
+            4. Level up
+          {% endif %}
+        </h3>
+        <p class="text-gray-600">
+          {% if lang == 'ru' %}
+            Открывай доступ к командным проектам, повышай уровень и собирай портфолио.
+          {% else %}
+            Unlock team projects, level up and build your portfolio.
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta" style="text-align: center; padding: 60px 20px;">
+  <h2>
+    {% if lang == 'ru' %}
+      Присоединяйся к нам 🚀
+    {% else %}
+      Join us 🚀
+    {% endif %}
+  </h2>
+  <p>
+    {% if lang == 'ru' %}
+      Хочешь первым получить доступ к платформе и участвовать в развитии проекта?
+    {% else %}
+      Want to be the first to get access to the platform and contribute to the project's development?
+    {% endif %}
+  </p>
+
+  <form id="email-form" style="margin-top: 20px;">
+  <input type="email" name="email" id="email-input"
+         placeholder="{% if lang == 'ru' %}Введите вашу почту{% else %}Enter your email{% endif %}"
+         required style="padding: 10px; width: 250px;">
+  <input type="hidden" name="lang" value="{{ lang }}">
+  <button type="submit"
+          style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none;">
+    {% if lang == 'ru' %}Оставить почту{% else %}Submit email{% endif %}
+  </button>
+</form>
+<p id="response-message" style="margin-top: 10px; color: green; font-weight: bold;"></p>
+
+
+
+  <p style="margin-top: 20px;">
+    {% if lang == 'ru' %}
+      или
+    {% else %}
+      or
+    {% endif %}
+  </p>
+
+  <a href="https://www.instagram.com/projectify.dev?igsh=MWg2eXprcHgza2RoYg==" target="_blank">
+    <button style="padding: 10px 20px; background-color: #0088cc; color: white; border: none;">
+      {% if lang == 'ru' %}
+        Подписаться на Instagram Projectify
+      {% else %}
+        Follow Projectify on Instagram
+      {% endif %}
+    </button>
+  </a>
+</section>
+
+  <script>
+  document.getElementById("email-form").addEventListener("submit", async function (e) {
+    e.preventDefault();  // prevent reload
+
+    const form = e.target;
+    const email = form.email.value;
+    const lang = form.lang.value;
+
+    const response = await fetch("/subscribe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: new URLSearchParams({ email, lang })
+    });
+
+    if (response.ok) {
+      document.getElementById("response-message").textContent =
+        lang === "ru" ? "Спасибо! Мы свяжемся с вами." : "Thanks! We'll be in touch.";
+      form.reset(); // clear form
+    } else {
+      document.getElementById("response-message").textContent =
+        lang === "ru" ? "Ошибка. Попробуйте ещё раз." : "Error. Please try again.";
+    }
+  });
+</script>
+
+  </body>
+</html>
